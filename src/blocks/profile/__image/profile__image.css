@@ -9,6 +9,7 @@
   background-position: center;
   margin: 0 29px 0 0;
   /*Макет очень кривоват, как считать этот отступ я хз. Проявите тут лояльность пока что*/
+  background-image: url('../../../images/avatar.jpg');
 }
 
 @media screen and (max-width: 740px) {

@@ -7,14 +7,14 @@
     "build": "rm -rf public && webpack",
     "dev": "webpack-dev-server --open --watch"
   },
-  "author": "Stas Basov",
+  "author": "Roman Travnikov",
   "license": "",
   "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
-    "autoprefixer": "^9.8.0",
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "autoprefixer": "^9.8.1",
     "babel-loader": "^8.1.0",
-    "css-loader": "^3.5.3",
+    "css-loader": "^3.6.0",
     "cssnano": "^4.1.10",
     "file-loader": "^6.0.0",
     "html-loader": "^1.1.0",
@@ -23,10 +23,10 @@
     "path": "^0.12.7",
     "postcss-loader": "^3.0.0",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
+    "corejs": "^1.0.0"
   }
 }
