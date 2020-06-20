@@ -2,11 +2,11 @@ import { isEscEvent } from '../utils';
 
 class Popup {
   constructor(popupSelector) {
-    this._popupSelector = popupSelector;
+    this.popupSelector = popupSelector;
   }
 
   open() {
-    this._popupSelector.classList.add("popup_is-opened");
+    this.popupSelector.classList.add("popup_is-opened");
     document.addEventListener("keyup", this._handleEscClose);
   }
 
@@ -16,7 +16,7 @@ class Popup {
   }
 
   setEventListeners() {
-    this._popupSelector.addEventListener("click", (evt) => {
+    this.popupSelector.addEventListener("click", (evt) => {
       if (evt.target.classList.contains("popup__close")) {
         this.close();
       }

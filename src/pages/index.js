@@ -79,7 +79,7 @@ const closeModalWindow = (modalWindow) => {
 }; */
 
 const renderCard = (data, wrap) => {
-  const card = new Card(data, cardSelector, null);
+  const card = new Card(data, cardSelector, imgPreviewPopup.open);
   console.info(card);
   wrap.prepend(card.getView());
 };
@@ -136,13 +136,15 @@ imageModalWindow.addEventListener('click', (evt) => {
 }); */
 
 // Инициализация
+const userInfo = new UserInfo({userNameSelector: profileTitle, userInfoSelector: profileDescription});
+const imgPreviewPopup = new PopupWithImage(imageModalWindow);
+const userPopup = new PopupWithForm(editFormModalWindow, formSubmitHandler);
+const placePopup = new PopupWithForm(cardFormModalWindow, cardFormSubmitHandler);
+
 const editFormValidator = new FormValidator(defaultFormConfig, editFormModalWindow);
 const cardFormValidator = new FormValidator(defaultFormConfig, cardFormModalWindow);
 const placesCards = new Section({ items:initialCards, renderer: renderCard}, placesWrap);
-const userPopup = new PopupWithForm(editFormModalWindow,);
-const placePopup = new PopupWithForm(cardFormModalWindow,);
-const imgPreviewPopup = new PopupWithImage(imageModalWindow,);
-const userInfo = new UserInfo({userNameSelector: profileTitle, userInfoSelector: profileDescription});
+
 
 placesCards.draw();
 

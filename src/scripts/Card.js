@@ -29,7 +29,7 @@ class Card {
     this._link = link;
 
     this._cardSelector = cardSelector;
-    this._handlePreviewPicture = handleCardClick;
+    this._handlePreviewPicture = handleCardClick(link, `Изображение ${name}`, name);
   }
 
   _getTemplate() {
@@ -65,7 +65,7 @@ class Card {
     this._element = null;
   }
 
-  _handlePreviewPicture() {
+  /* _handlePreviewPicture() {
     // Студенты изучат способы описания взаимодействия между классами только в следующем спринте.
     // Эту зависимость студенты будут передавать как хендлер в конструктор класса.
     // Поэтому на данный момент они дублируют код из index.js в Card.js (Объявление переменных, функции)
@@ -76,7 +76,7 @@ class Card {
 
     imageModalWindow.classList.add('popup_is-opened');
     document.addEventListener('keyup', handleEscUp);
-  }
+  } */
 
   getView() {
     // Публичный метод, возвращащий представление карточки;
