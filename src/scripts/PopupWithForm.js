@@ -6,19 +6,33 @@ class PopupWithForm extends Popup {
     this.submitCallback = submitCallback;
   }
 
-  _getInputValues(params) {}
+  _getInputValues() {
+    return this._inputs.reduce((info, input) => {
+      info[input.name] = input.value;
+      return info;
+    }, {});
+  }
 
   setEventListeners() {
-    this.popupSelector.addEventListener("click", (evt) => {
-      if (evt.target.classList.contains("popup__close")) {
-        this.close();
-      }
-    });
+    super.setEventListeners()
+    this._inputs = Array.from(this._element.querySelectorAll('.popup__input'))
+    this._element.addEventListener('submit', event => {
+      event.preventDefault()
+      const formInfo = this._getInputValues()
+      this._submitCallback(formInfo)
+      this.close()
+    })
   }
 
   close() {
-    modalWindow.classList.remove("popup_is-opened");
-    document.removeEventListener("keyup", this._handleEscClose);
+    super.close()
+    this._clear()
+  }
+
+  _clear() {
+    this._inputs.forEach(el => {
+      el.value = ''
+    })
   }
 }
 

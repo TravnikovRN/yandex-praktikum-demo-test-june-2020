@@ -68,26 +68,16 @@ const defaultFormConfig = {
   errorClass: 'popup__error_visible'
 };
 
-/* const openModalWindow = (modalWindow) => {
-  modalWindow.classList.add('popup_is-opened');
-  document.addEventListener('keyup', handleEscUp);
-};
-
-const closeModalWindow = (modalWindow) => {
-  modalWindow.classList.remove('popup_is-opened');
-  document.removeEventListener('keyup', handleEscUp);
-}; */
+// Инициализация
+const userInfo = new UserInfo({userNameSelector: profileTitle, userInfoSelector: profileDescription});
+const imgPreviewPopup = new PopupWithImage(imageModalWindow);
 
 const renderCard = (data, wrap) => {
-  const card = new Card(data, cardSelector, imgPreviewPopup.open);
-  console.info(card);
+  const card = new Card(data, cardSelector, (img, src, alt) => imgPreviewPopup.open(img, src, alt) );
   wrap.prepend(card.getView());
 };
 
-/* const handleEscUp = (evt) => {
-  evt.preventDefault();
-  isEscEvent(evt, closeModalWindow);
-}; */
+const placesCards = new Section({ items:initialCards, renderer: renderCard}, placesWrap);
 
 const formSubmitHandler = (evt) => {
   evt.preventDefault();
@@ -104,6 +94,12 @@ const cardFormSubmitHandler = (evt) => {
   }, placesWrap);
   popup__closeModalWindow(cardFormModalWindow);
 };
+
+const userPopup = new PopupWithForm(editFormModalWindow, formSubmitHandler);
+const placePopup = new PopupWithForm(cardFormModalWindow, cardFormSubmitHandler);
+
+const editFormValidator = new FormValidator(defaultFormConfig, editFormModalWindow);
+const cardFormValidator = new FormValidator(defaultFormConfig, cardFormModalWindow);
 
 // EventListeners
 editFormModalWindow.addEventListener('submit', formSubmitHandler);
@@ -135,15 +131,7 @@ imageModalWindow.addEventListener('click', (evt) => {
   }
 }); */
 
-// Инициализация
-const userInfo = new UserInfo({userNameSelector: profileTitle, userInfoSelector: profileDescription});
-const imgPreviewPopup = new PopupWithImage(imageModalWindow);
-const userPopup = new PopupWithForm(editFormModalWindow, formSubmitHandler);
-const placePopup = new PopupWithForm(cardFormModalWindow, cardFormSubmitHandler);
 
-const editFormValidator = new FormValidator(defaultFormConfig, editFormModalWindow);
-const cardFormValidator = new FormValidator(defaultFormConfig, cardFormModalWindow);
-const placesCards = new Section({ items:initialCards, renderer: renderCard}, placesWrap);
 
 
 placesCards.draw();

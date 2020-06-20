@@ -29,7 +29,7 @@ class Card {
     this._link = link;
 
     this._cardSelector = cardSelector;
-    this._handlePreviewPicture = handleCardClick(link, `Изображение ${name}`, name);
+    this._handlePreviewPicture = handleCardClick;
   }
 
   _getTemplate() {
@@ -50,7 +50,7 @@ class Card {
       .addEventListener('click', () => this._handleDeleteCard());
 
     this._element.querySelector('.card__image')
-      .addEventListener('click', () => this._handlePreviewPicture());
+      .addEventListener('click', () => this._handlePreviewPicture(imageElement, this._link, `Изображение ${this._text}`));
   }
 
   _handleLikeIcon() {
