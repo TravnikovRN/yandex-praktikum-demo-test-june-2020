@@ -1,15 +1,20 @@
 import Popup from "./Popup";
-const imageCaption = imageModalWindow.querySelector('.popup__caption');
 
 class PopupWithImage extends Popup {
-    constructor(params) {
-        super(params)
+    constructor(popupSelector, img, src, alt)  {
+        super(popupSelector);
+        this.img = img;
+        this.src = src;
+        this.alt = alt;
     }
 
-    open(img, src, alt) {
-        img.src = src;
-        img.alt = alt;
-        imageCaption.textContent = alt;
+    open() {
+
+        const imageCaption = this._popupSelector.querySelector('.popup__caption');
+
+        this.img.src = this.src;
+        this.img.alt = this.alt;
+        imageCaption.textContent = this.alt;
 
         this._popupSelector.classList.add("popup_is-opened");
         document.addEventListener("keyup", this._handleEscClose);

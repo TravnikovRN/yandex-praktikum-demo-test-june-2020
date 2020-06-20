@@ -5,8 +5,8 @@ import PopupWithForms from '../scripts/PopupWithForm';
 import PopupWithImage from '../scripts/PopupWithImage';
 import Section from '../scripts/Section';
 import UserInfo from '../scripts/UserInfo';
+import PopupWithForm from '../scripts/PopupWithForm';
 
-const ESC_KEYCODE = 27;
 // Константы
 
 const initialCards = [
@@ -68,14 +68,7 @@ const defaultFormConfig = {
   errorClass: 'popup__error_visible'
 };
 
-const isEscEvent = (evt, action) => {
-  const activePopup = document.querySelector('.popup_is-opened');
-  if (evt.which === ESC_KEYCODE) {
-    action(activePopup);
-  }
-};
-
-const openModalWindow = (modalWindow) => {
+/* const openModalWindow = (modalWindow) => {
   modalWindow.classList.add('popup_is-opened');
   document.addEventListener('keyup', handleEscUp);
 };
@@ -83,17 +76,18 @@ const openModalWindow = (modalWindow) => {
 const closeModalWindow = (modalWindow) => {
   modalWindow.classList.remove('popup_is-opened');
   document.removeEventListener('keyup', handleEscUp);
-};
+}; */
 
 const renderCard = (data, wrap) => {
   const card = new Card(data, cardSelector, null);
+  console.info(card);
   wrap.prepend(card.getView());
 };
 
-const handleEscUp = (evt) => {
+/* const handleEscUp = (evt) => {
   evt.preventDefault();
   isEscEvent(evt, closeModalWindow);
-};
+}; */
 
 const formSubmitHandler = (evt) => {
   evt.preventDefault();
@@ -116,16 +110,16 @@ editFormModalWindow.addEventListener('submit', formSubmitHandler);
 cardFormModalWindow.addEventListener('submit', cardFormSubmitHandler);
 
 openEditFormButton.addEventListener('click', () => {
-  titleInputValue.value = profileTitle.textContent;
-  descriptionInputValue.value = profileDescription.textContent;
-  openModalWindow(editFormModalWindow);
+  // titleInputValue.value = profileTitle.textContent;
+  // descriptionInputValue.value = profileDescription.textContent;
+  // openModalWindow(editFormModalWindow);
 });
 
 openCardFormButton.addEventListener('click', () => {
-  openModalWindow(cardFormModalWindow);
+  // openModalWindow(cardFormModalWindow);
 });
 
-editFormModalWindow.addEventListener('click', (evt) => {
+/* editFormModalWindow.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
     closeModalWindow(editFormModalWindow);
   }
@@ -139,19 +133,18 @@ imageModalWindow.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
     closeModalWindow(imageModalWindow);
   }
-});
+}); */
 
 // Инициализация
-initialCards.forEach((data) => {
-  renderCard(data, placesWrap)
-});
-
-new Section({initialCards, renderCard}, placesWrap);
-
-const userInfo = new UserInfo({profileTitle, profileDescription});
-
 const editFormValidator = new FormValidator(defaultFormConfig, editFormModalWindow);
 const cardFormValidator = new FormValidator(defaultFormConfig, cardFormModalWindow);
+const placesCards = new Section({ items:initialCards, renderer: renderCard}, placesWrap);
+const userPopup = new PopupWithForm(editFormModalWindow,);
+const placePopup = new PopupWithForm(cardFormModalWindow,);
+const imgPreviewPopup = new PopupWithImage(imageModalWindow,);
+const userInfo = new UserInfo({userNameSelector: profileTitle, userInfoSelector: profileDescription});
+
+placesCards.draw();
 
 editFormValidator.enableValidation();
 cardFormValidator.enableValidation();

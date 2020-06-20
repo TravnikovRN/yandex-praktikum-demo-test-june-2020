@@ -1,8 +1,8 @@
 import Popup from "./Popup";
 
 class PopupWithForm extends Popup {
-    constructor(params, submitCallback) {
-        super(params);
+    constructor(popupSelector, submitCallback) {
+        super(popupSelector);
         this.submitCallback = submitCallback;
     }
 

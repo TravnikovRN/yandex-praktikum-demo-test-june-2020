@@ -1,18 +1,19 @@
 class Section {
-    constructor({items, renderer}, containerSelector) {
-        this.items = items;
-        this.renderer = renderer;
-        this.containerSelector = containerSelector;
-    }
+  constructor(data, containerSelector) {
+    console.info(data, containerSelector);
+    this.items = data.items;
+    this.renderer = data.renderer;
+    this.containerSelector = containerSelector;
+  }
 
-    draw() {
-        this.items.map(elm => renderer(elm))
-    }
+  draw() {
+    console.info(this);
+    this.items.map((elm) => this.renderer(elm, this.containerSelector));
+  }
 
-    addItem(element) {
-        this.items.push(element);    
-    }
-    
+  addItem(element) {
+    this.containerSelector.prepend(element);
+  }
 }
 
 export default Section;
