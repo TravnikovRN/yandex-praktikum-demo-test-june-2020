@@ -24,11 +24,12 @@ const isEscEvent = (evt, action) => {
 // Как "Можно лучше" посоветуйте вынести эти функции и переменные в модуль utils.js и импортировать их в класс Card.
 
 class Card {
-  constructor(data, cardSelector) {
-    this._text = data.name;
-    this._link = data.link;
+  constructor({name, link}, cardSelector, handleCardClick) {
+    this._text = name;
+    this._link = link;
 
     this._cardSelector = cardSelector;
+    this._handlePreviewPicture = handleCardClick;
   }
 
   _getTemplate() {

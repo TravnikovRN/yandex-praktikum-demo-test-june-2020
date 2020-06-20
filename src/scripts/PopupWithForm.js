@@ -6,20 +6,18 @@ class PopupWithForm extends Popup {
         this.submitCallback = submitCallback;
     }
 
-    #_getInputValues = (params) => {
+    _getInputValues(params) {
         
     }
     
-    setEventListeners = (params) => {
+    setEventListeners(params) {
         
     }
 
-    close = (params) => {
+    close(params) {
         
     }
     
-    
-
 }
 
 export default PopupWithForm;

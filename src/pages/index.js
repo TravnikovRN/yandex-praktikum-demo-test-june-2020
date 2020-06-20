@@ -1,6 +1,10 @@
-import '../pages/index.css';
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
+import './index.css';
+import Card from '../scripts/Card.js';
+import FormValidator from '../scripts/FormValidator.js';
+import PopupWithForms from '../scripts/PopupWithForm';
+import PopupWithImage from '../scripts/PopupWithImage';
+import Section from '../scripts/Section';
+import UserInfo from '../scripts/UserInfo';
 
 const ESC_KEYCODE = 27;
 // Константы
@@ -82,7 +86,7 @@ const closeModalWindow = (modalWindow) => {
 };
 
 const renderCard = (data, wrap) => {
-  const card = new Card(data, cardSelector);
+  const card = new Card(data, cardSelector, null);
   wrap.prepend(card.getView());
 };
 
@@ -104,7 +108,7 @@ const cardFormSubmitHandler = (evt) => {
     name: cardNameInputValue.value,
     link: cardLinkInputValue.value
   }, placesWrap);
-  closeModalWindow(cardFormModalWindow);
+  popup__closeModalWindow(cardFormModalWindow);
 };
 
 // EventListeners
@@ -141,6 +145,10 @@ imageModalWindow.addEventListener('click', (evt) => {
 initialCards.forEach((data) => {
   renderCard(data, placesWrap)
 });
+
+new Section({initialCards, renderCard}, placesWrap);
+
+const userInfo = new UserInfo({profileTitle, profileDescription});
 
 const editFormValidator = new FormValidator(defaultFormConfig, editFormModalWindow);
 const cardFormValidator = new FormValidator(defaultFormConfig, cardFormModalWindow);

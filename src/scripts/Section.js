@@ -5,11 +5,11 @@ class Section {
         this.containerSelector = containerSelector;
     }
 
-    draw = () => {
+    draw() {
         this.items.map(elm => renderer(elm))
     }
 
-    addItem = (element) => {
+    addItem(element) {
         this.items.push(element);    
     }
     
