@@ -80,19 +80,18 @@ const renderCard = (data, wrap) => {
 const placesCards = new Section({ items:initialCards, renderer: renderCard}, placesWrap);
 
 const formSubmitHandler = (evt) => {
-  evt.preventDefault();
-  profileTitle.textContent = titleInputValue.value;
-  profileDescription.textContent = descriptionInputValue.value;
-  closeModalWindow(editFormModalWindow);
+  // evt.preventDefault();
+  userInfo.setUserInfo(titleInputValue.value, descriptionInputValue.value);
+  // closeModalWindow(editFormModalWindow);
 };
 
 const cardFormSubmitHandler = (evt) => {
-  evt.preventDefault();
+  // evt.preventDefault();
   renderCard({
     name: cardNameInputValue.value,
     link: cardLinkInputValue.value
   }, placesWrap);
-  popup__closeModalWindow(cardFormModalWindow);
+  // popup__closeModalWindow(cardFormModalWindows);
 };
 
 const userPopup = new PopupWithForm(editFormModalWindow, formSubmitHandler);
@@ -106,33 +105,15 @@ editFormModalWindow.addEventListener('submit', formSubmitHandler);
 cardFormModalWindow.addEventListener('submit', cardFormSubmitHandler);
 
 openEditFormButton.addEventListener('click', () => {
-  // titleInputValue.value = profileTitle.textContent;
-  // descriptionInputValue.value = profileDescription.textContent;
-  // openModalWindow(editFormModalWindow);
+  const {name, info} = userInfo.getUserInfo();
+  titleInputValue.value = name;
+  descriptionInputValue.value = info;
+  userPopup.open();
 });
 
 openCardFormButton.addEventListener('click', () => {
-  // openModalWindow(cardFormModalWindow);
+  placePopup.open();
 });
-
-/* editFormModalWindow.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closeModalWindow(editFormModalWindow);
-  }
-});
-cardFormModalWindow.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closeModalWindow(cardFormModalWindow);
-  }
-});
-imageModalWindow.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closeModalWindow(imageModalWindow);
-  }
-}); */
-
-
-
 
 placesCards.draw();
 

@@ -1,11 +1,6 @@
 import Popup from "./Popup";
 
 class PopupWithImage extends Popup {
-  constructor(popupSelector) {
-    super(popupSelector);
-    this._element = popupSelector;
-  }
-
   open(img, src, alt) {
 
     const imageCaption = this._element.querySelector(".popup__caption");

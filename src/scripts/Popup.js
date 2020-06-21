@@ -1,4 +1,4 @@
-import { isEscEvent } from '../utils';
+import { isEscEvent } from "../utils";
 
 class Popup {
   constructor(popupSelector) {
@@ -9,6 +9,7 @@ class Popup {
   open() {
     this._element.classList.add("popup_is-opened");
     document.addEventListener("keyup", this._handleEscClose);
+    this.setEventListeners();
   }
 
   close() {
@@ -26,7 +27,7 @@ class Popup {
 
   _handleEscClose(evt) {
     evt.preventDefault();
-    isEscEvent(evt, this.close);
+    isEscEvent(evt, () => this.close());
   }
 }
 
