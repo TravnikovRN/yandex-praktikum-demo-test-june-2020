@@ -65,19 +65,6 @@ class Card {
     this._element = null;
   }
 
-  /* _handlePreviewPicture() {
-    // Студенты изучат способы описания взаимодействия между классами только в следующем спринте.
-    // Эту зависимость студенты будут передавать как хендлер в конструктор класса.
-    // Поэтому на данный момент они дублируют код из index.js в Card.js (Объявление переменных, функции)
-
-    imageElement.src = this._link;
-    imageElement.alt = `Изображение ${this._link}`;
-    imageCaption.textContent = this._text;
-
-    imageModalWindow.classList.add('popup_is-opened');
-    document.addEventListener('keyup', handleEscUp);
-  } */
-
   getView() {
     // Публичный метод, возвращащий представление карточки;
     this._element = this._getTemplate();
