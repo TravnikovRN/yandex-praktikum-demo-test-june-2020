@@ -1,11 +1,11 @@
-const imageModalWindow = document.querySelector('.popup_type_image');
-const imageElement = imageModalWindow.querySelector('.popup__image');
-const imageCaption = imageModalWindow.querySelector('.popup__caption');
+const imageModalWindow = document.querySelector(".popup_type_image");
+const imageElement = imageModalWindow.querySelector(".popup__image");
+const imageCaption = imageModalWindow.querySelector(".popup__caption");
 const ESC_KEYCODE = 27;
 
 const closeModalWindow = () => {
-  imageModalWindow.classList.remove('popup_is-opened');
-  document.removeEventListener('keyup', handleEscUp);
+  imageModalWindow.classList.remove("popup_is-opened");
+  document.removeEventListener("keyup", handleEscUp);
 };
 
 const handleEscUp = (evt) => {
@@ -14,7 +14,7 @@ const handleEscUp = (evt) => {
 };
 
 const isEscEvent = (evt, action) => {
-  const activePopup = document.querySelector('.popup_is-opened');
+  const activePopup = document.querySelector(".popup_is-opened");
   if (evt.which === ESC_KEYCODE) {
     action(activePopup);
   }
@@ -24,7 +24,7 @@ const isEscEvent = (evt, action) => {
 // Как "Можно лучше" посоветуйте вынести эти функции и переменные в модуль utils.js и импортировать их в класс Card.
 
 class Card {
-  constructor({name, link}, cardSelector, handleCardClick) {
+  constructor({ name, link }, cardSelector, handleCardClick) {
     this._text = name;
     this._link = link;
 
@@ -35,27 +35,36 @@ class Card {
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
-      .content
-      .querySelector('.card')
+      .content.querySelector(".card")
       .cloneNode(true);
 
     return cardElement;
   }
 
   _setEventListeners() {
-    this._element.querySelector('.card__like-button')
-      .addEventListener('click', () => this._handleLikeIcon());
+    this._element
+      .querySelector(".card__like-button")
+      .addEventListener("click", () => this._handleLikeIcon());
 
-    this._element.querySelector('.card__delete-button')
-      .addEventListener('click', () => this._handleDeleteCard());
+    this._element
+      .querySelector(".card__delete-button")
+      .addEventListener("click", () => this._handleDeleteCard());
 
-    this._element.querySelector('.card__image')
-      .addEventListener('click', () => this._handlePreviewPicture(imageElement, this._link, `Изображение ${this._text}`));
+    this._element
+      .querySelector(".card__image")
+      .addEventListener("click", () =>
+        this._handlePreviewPicture(
+          imageElement,
+          this._link,
+          `Изображение ${this._text}`
+        )
+      );
   }
 
   _handleLikeIcon() {
-    this._element.querySelector('.card__like-button').
-      classList.toggle('card__like-button_is-active');
+    this._element
+      .querySelector(".card__like-button")
+      .classList.toggle("card__like-button_is-active");
   }
 
   _handleDeleteCard() {
@@ -70,8 +79,10 @@ class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    this._element.querySelector('.card__image').style.backgroundImage = `url(${this._link})`;
-    this._element.querySelector('.card__title').textContent = this._text;
+    this._element.querySelector(
+      ".card__image"
+    ).style.backgroundImage = `url(${this._link})`;
+    this._element.querySelector(".card__title").textContent = this._text;
 
     return this._element;
   }
