@@ -12,7 +12,6 @@ class UserInfo {
   }
 
   setUserInfo(newName, newInfo) {
-    console.info(newName, newInfo);
     this.name.textContent = newName;
     this.info.textContent = newInfo;
   }

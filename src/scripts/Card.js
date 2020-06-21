@@ -1,27 +1,4 @@
-const imageModalWindow = document.querySelector(".popup_type_image");
-const imageElement = imageModalWindow.querySelector(".popup__image");
-const imageCaption = imageModalWindow.querySelector(".popup__caption");
-const ESC_KEYCODE = 27;
-
-const closeModalWindow = () => {
-  imageModalWindow.classList.remove("popup_is-opened");
-  document.removeEventListener("keyup", handleEscUp);
-};
-
-const handleEscUp = (evt) => {
-  evt.preventDefault();
-  isEscEvent(evt, closeModalWindow);
-};
-
-const isEscEvent = (evt, action) => {
-  const activePopup = document.querySelector(".popup_is-opened");
-  if (evt.which === ESC_KEYCODE) {
-    action(activePopup);
-  }
-};
-
-// Эти функции и переменные -- дубли из index.js. Они нарушают DRY, но в следующем спринте студенты удалят этот код.
-// Как "Можно лучше" посоветуйте вынести эти функции и переменные в модуль utils.js и импортировать их в класс Card.
+import { imageElement } from '../constants';
 
 class Card {
   constructor({ name, link }, cardSelector, handleCardClick) {

@@ -14,7 +14,7 @@ class PopupWithForm extends Popup {
     }, {});
   }
 
-  _submit(event) {
+  _submit(event) { 
     event.preventDefault();
     const formInfo = this._getInputValues();
     this.submitCallback(formInfo);
@@ -28,7 +28,7 @@ class PopupWithForm extends Popup {
   }
 
   close() {
-    this._element.removeEventListener("submit", this._submit);
+    this._element.removeEventListener("submit", this._submit); // Не забываем обнулять листнеры
     super.close();
     this._clear();
   }
