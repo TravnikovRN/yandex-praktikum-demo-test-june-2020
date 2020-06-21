@@ -15,3 +15,5 @@ class Section {
 }
 
 export default Section;
+
+// Отлично реализован функционал данного класса

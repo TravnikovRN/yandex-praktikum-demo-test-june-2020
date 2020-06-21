@@ -13,3 +13,4 @@ class PopupWithImage extends Popup {
 }
 
 export default PopupWithImage;
+// Отлично реализован функционал данного класса

@@ -1,4 +1,4 @@
-import { isEscEvent } from "../utils";
+import { isEscEvent } from "../utils"; //хорошая практика
 
 class Popup {
   constructor(popupSelector) {
@@ -32,3 +32,5 @@ class Popup {
 }
 
 export default Popup;
+
+// Отлично реализован функционал данного класса
