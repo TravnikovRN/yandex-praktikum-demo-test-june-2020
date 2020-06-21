@@ -1,4 +1,4 @@
-import { imageElement } from '../constants';
+import { imageElement } from '../constants'; // молодец, вынесение констант в отдельный файл - хорошая практика 
 
 class Card {
   constructor({ name, link }, cardSelector, handleCardClick) {
@@ -46,7 +46,6 @@ class Card {
 
   _handleDeleteCard() {
     this._element.remove();
-
     // Посоветовать занулять элемент
     this._element = null;
   }
@@ -55,7 +54,6 @@ class Card {
     // Публичный метод, возвращащий представление карточки;
     this._element = this._getTemplate();
     this._setEventListeners();
-
     this._element.querySelector(
       ".card__image"
     ).style.backgroundImage = `url(${this._link})`;
@@ -66,3 +64,4 @@ class Card {
 }
 
 export default Card;
+// Отлично реализован функционал данного класса

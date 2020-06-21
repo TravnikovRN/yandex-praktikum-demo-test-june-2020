@@ -41,3 +41,4 @@ class PopupWithForm extends Popup {
 }
 
 export default PopupWithForm;
+// Отлично реализован функционал данного класса

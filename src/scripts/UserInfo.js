@@ -1,5 +1,5 @@
 class UserInfo {
-  constructor({ userNameSelector, userInfoSelector }) {
+  constructor({ userNameSelector, userInfoSelector }) { //молодец, использование деструктурзации - хорошая практика
     this.name = userNameSelector;
     this.info = userInfoSelector;
   }
@@ -18,3 +18,4 @@ class UserInfo {
 }
 
 export default UserInfo;
+// Отлично реализован функционал данного класса
