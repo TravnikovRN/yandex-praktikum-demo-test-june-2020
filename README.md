@@ -7,3 +7,4 @@
 1. Создать классы Section, Popup, PopupWithImage, PopupWithForm, UserInfo, Card
 2. Убрать весь спагетти код из index.js
 3. Добавить сборку webpack'ом
+4. Сделать проверку кода подобной работы для другого код-ревьюера
